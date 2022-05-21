@@ -10,8 +10,7 @@ class JegoTrip():
         self.user_id = user_id
 
     def task(self):
-        resp = requests.get(
-            f'http://task.jegotrip.com.cn:8080/app/tasks?userid={self.user_id}')
+        resp = requests.get(f'https://app.jegotrip.com.cn/api/service/v1/mission/sign/userSign?token=={self.user_id}')
         data = resp.json()
         # pprint.pprint(data)
         return data['rtn']['tasks']
@@ -23,16 +22,15 @@ class JegoTrip():
                                  'taskId': task_id    # 此处`I`要大写
                              },
                              headers={
-                                 'Accept-Encoding': 'gzip, deflate',
-                                 'Origin': 'http://task.jegotrip.com.cn:8080',
-                                 'Accept': 'application/json, text/plain, */*',
-                                 'Content-Type': 'application/json;charset=utf-8',
-                                 'Connection': 'close',
-                                 'Host': 'task.jegotrip.com.cn:8080',
-                                 'Content-Length': '89',
+                                 'Accept-Encoding': 'gzip, deflate, br',
+                                 'Origin': ' https://cdn.jegotrip.com.cn',
+                                 'Content-Type': 'application/json',
+                                 'Connection': 'keep-alive',
+                                 'Host': 'app.jegotrip.com.cn',
+                                 'Content-Length': '112',
                                  'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 source/jegotrip',
-                                 'Accept-Language': 'en-us',
-                                 'Referer': 'http://task.jegotrip.com.cn:8080/task/index.html'
+                                 'Accept-Language': 'zh-cn',
+                                 'Referer': 'https://cdn.jegotrip.com.cn/static/missioncenter/index.html'
                              })
 
         data = resp.json()
