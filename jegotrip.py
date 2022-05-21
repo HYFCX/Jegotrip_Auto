@@ -16,7 +16,7 @@ class JegoTrip():
         return data['rtn']['tasks']
 
     def sign(self, task_id) -> bool:
-        resp = requests.post('http://task.jegotrip.com.cn:8080/app/sign',
+        resp = requests.post('https://app.jegotrip.com.cn/api/service/v1/mission/sign',
                              json={
                                  'userid': self.user_id,
                                  'taskId': task_id    # 此处`I`要大写
